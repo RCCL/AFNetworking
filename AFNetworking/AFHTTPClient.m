@@ -157,7 +157,7 @@ NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
         for (id nestedKey in [dictionary.allKeys sortedArrayUsingDescriptors:@[ sortDescriptor ]]) {
             id nestedValue = [dictionary objectForKey:nestedKey];
             if (nestedValue) {
-                [mutableQueryStringComponents addObjectsFromArray:AFQueryStringPairsFromKeyAndValue((key ? [NSString stringWithFormat:@"%@[%@]", key, nestedKey] : nestedKey), nestedValue)];
+                [mutableQueryStringComponents addObjectsFromArray:AFQueryStringPairsFromKeyAndValue((key ? [NSString stringWithFormat:@"%@.%@", key, nestedKey] : nestedKey), nestedValue)];
             }
         }
     } else if ([value isKindOfClass:[NSArray class]]) {
